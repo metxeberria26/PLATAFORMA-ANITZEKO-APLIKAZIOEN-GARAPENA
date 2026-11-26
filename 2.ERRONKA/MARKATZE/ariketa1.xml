@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE saski SYSTEM "saski.dtd">
+
+<saski>
+    <produktua id="p1">
+        <izena>Ogia</izena>
+        <kantitatea>2</kantitatea>
+        <prezioa>1.20</prezioa>
+    </produktua>
+
+    <produktua id="p2">
+        <izena>Esnea</izena>
+        <kantitatea>3</kantitatea>
+        <prezioa>0.95</prezioa>
+    </produktua>
+
+    <produktua id="p3">
+        <izena>Sagarrak</izena>
+        <kantitatea>5</kantitatea>
+        <prezioa>2.50</prezioa>
+    </produktua>
+</saski>

@@ -1,0 +1,11 @@
+<!ELEMENT saski (produktua+)>
+
+<!ELEMENT produktua (izena, kantitatea, prezioa)>
+
+<!ATTLIST produktua id ID #REQUIRED>
+
+<!ELEMENT izena (#PCDATA)>
+
+<!ELEMENT kantitatea (#PCDATA)>
+
+<!ELEMENT prezioa (#PCDATA)>

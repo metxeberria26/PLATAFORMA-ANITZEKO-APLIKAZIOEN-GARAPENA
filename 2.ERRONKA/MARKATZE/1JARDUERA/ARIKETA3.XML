@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kritika id="a42065200" hizkuntza="es">
+    <iturria>
+        <aldizkaria></aldizkaria>
+        <url></url>
+        <argitalpen_data></argitalpen_data>
+    </iturria>
+
+    <egilea>
+        <izena></izena>
+    </egilea>
+
+    <pelikula>
+        <izenburua></izenburua>
+        <jatorrizko_izenburua></jatorrizko_izenburua>
+        <urtea></urtea>
+        <iraupena unitatea="minutu"></iraupena>
+        <herrialdea></herrialdea>
+        <plataforma></plataforma>
+        <generoak>
+            <generoa></generoa>
+            <generoa></generoa>
+            <generoa></generoa>
+        </generoak>
+        <zuzendariak>
+            <zuzendaria></zuzendaria>
+            <zuzendaria><zuzendaria/>
+        </zuzendariak>
+        <gidoilariak>
+            <gidoilaria></gidoilaria>
+            <gidoilaria>Patrick McHale</gidoilaria>
+        </gidoilariak>
+        <aktoreak>
+            <aktorea> </aktorea>
+            <aktorea> </aktorea>
+            <aktorea> </aktorea>
+        </aktoreak>
+    </pelikula>
+
+    <balorazioa>
+        <puntuazioa></puntuazioa>
+        <aldekoak></aldekoak>
+        <kontrakoak></kontrakoak>
+    </balorazioa>
+
+    <edukia>
+        <titularra></titularra>
+        <azpititulua></azpititulua>
+        <sinopsia></sinopsia>
+        <gorputza>
+            <paragrafoa></paragrafoa>
+            <paragrafoa></paragrafoa>
+        </gorputza>
+    </edukia>
+</kritika>

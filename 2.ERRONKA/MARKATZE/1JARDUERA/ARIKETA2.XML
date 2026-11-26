@@ -1,0 +1,36 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Faktura>
+
+    <Datuak>
+        <Data></Data>
+        <Zenbakia></Zenbakia>
+    </Datuak>
+
+    <Bezeroa>
+        <Izena></Izena>
+        <IFK_NAN></IFK_NAN>
+        <Helbidea></Helbidea>
+        <Herria></Herria>
+    </Bezeroa>
+
+    <Produktuak>
+        <Produktua>
+            <Kopurua></Kopurua>
+            <Azalpena></Azalpena>
+            <Prezioa></Prezioa>
+            <Zenbatekoa></Zenbatekoa>
+        </Produktua>
+    </Produktuak>
+
+    <Baldintzak>
+        <Ordainketa></Ordainketa>
+    </Baldintzak>
+
+    <Guztira>  </Guztira>
+    <Totala>1050</Totala>
+    <BEZ>21</BEZ>
+    <Ordaintzeko_Guztira>1270.50</Ordaintzeko_Guztira>
+
+</Faktura>
