@@ -1,0 +1,7 @@
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\HASIERAKO ARIKETAK\lehenariketak\lehenariketak\bin\Debug\lehenariketak.exe.config
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\HASIERAKO ARIKETAK\lehenariketak\lehenariketak\bin\Debug\lehenariketak.exe
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\HASIERAKO ARIKETAK\lehenariketak\lehenariketak\bin\Debug\lehenariketak.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\HASIERAKO ARIKETAK\lehenariketak\lehenariketak\obj\Debug\lehenariketak.csproj.AssemblyReference.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\HASIERAKO ARIKETAK\lehenariketak\lehenariketak\obj\Debug\lehenariketak.csproj.CoreCompileInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\HASIERAKO ARIKETAK\lehenariketak\lehenariketak\obj\Debug\lehenariketak.exe
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\HASIERAKO ARIKETAK\lehenariketak\lehenariketak\obj\Debug\lehenariketak.pdb

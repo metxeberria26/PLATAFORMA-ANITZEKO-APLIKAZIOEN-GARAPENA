@@ -1,0 +1,15 @@
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\bin\Debug\net8.0\SalbuespenakDenda.exe
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\bin\Debug\net8.0\SalbuespenakDenda.deps.json
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\bin\Debug\net8.0\SalbuespenakDenda.runtimeconfig.json
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\bin\Debug\net8.0\SalbuespenakDenda.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\bin\Debug\net8.0\SalbuespenakDenda.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\SalbuespenakDenda.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\SalbuespenakDenda.AssemblyInfoInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\SalbuespenakDenda.AssemblyInfo.cs
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\SalbuespenakDenda.csproj.CoreCompileInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\SalbuespenakDenda.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\refint\SalbuespenakDenda.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\SalbuespenakDenda.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\SalbuespenakDenda.genruntimeconfig.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\ref\SalbuespenakDenda.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Salbuespenak_Hasiera_EU\SalbuespenakDenda\obj\Debug\net8.0\Salbuesp.4A1A9676.Up2Date

@@ -1,0 +1,4 @@
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\FitxategiakPartida_EU\obj\Debug\net8.0\FitxategiakPartida.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\FitxategiakPartida_EU\obj\Debug\net8.0\FitxategiakPartida.AssemblyInfoInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\FitxategiakPartida_EU\obj\Debug\net8.0\FitxategiakPartida.AssemblyInfo.cs
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\FitxategiakPartida_EU\obj\Debug\net8.0\FitxategiakPartida.csproj.CoreCompileInputs.cache

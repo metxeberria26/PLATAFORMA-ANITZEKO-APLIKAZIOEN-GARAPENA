@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arrayak — Unitate didaktikoa (C#)</title>
+<style>:root{
+  --bg:#f7f5f0; --paper:#ffffff; --ink:#1f2328; --muted:#5b6370; --line:#e3ded3;
+  --accent:#b4441c; --accent-soft:#fbe9e1; --ok:#1d7a46; --ok-soft:#e2f4e9;
+  --bad:#b42318; --bad-soft:#fde8e6; --info:#1d5fa8; --info-soft:#e5effa;
+  --code-bg:#1e2230; --code-ink:#e6e8ef; --kw:#ff9e7a; --num:#9fd3ff; --str:#b9e58f; --com:#8a93a8; --ty:#ffd479;
+  --cell:#fff8ec; --cell-line:#d9c7a3; --hi:#ffd166;
+  --r:10px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171c; --paper:#1d2027; --ink:#e7e9ee; --muted:#a2a9b6; --line:#323743;
+    --accent:#ff8a5c; --accent-soft:#3a2219; --ok:#5cd394; --ok-soft:#173326;
+    --bad:#ff7a6e; --bad-soft:#3b1c1a; --info:#7db4ff; --info-soft:#1a2a40;
+    --code-bg:#0f1117; --cell:#2a2620; --cell-line:#5b4d36; --hi:#a57a12;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 80px}
+header.hero{border-bottom:3px solid var(--accent);padding-bottom:18px;margin-bottom:24px}
+.kicker{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:2.1rem;line-height:1.15;margin:.2em 0 .3em}
+h2{font-size:1.45rem;margin:2.2em 0 .5em;padding-top:.4em;border-top:1px solid var(--line)}
+h2 .n{display:inline-block;min-width:1.8em;color:var(--accent)}
+h3{font-size:1.1rem;margin:1.6em 0 .4em}
+p,li{max-width:72ch}
+a{color:var(--info)}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.92em;background:var(--accent-soft);padding:.05em .35em;border-radius:4px}
+pre{background:var(--code-bg);color:var(--code-ink);padding:14px 16px;border-radius:var(--r);overflow-x:auto;font-size:.88rem;line-height:1.5}
+pre code{background:none;padding:0;font-size:inherit;color:inherit}
+.tok-kw{color:var(--kw)} .tok-num{color:var(--num)} .tok-str{color:var(--str)} .tok-com{color:var(--com);font-style:italic} .tok-ty{color:var(--ty)}
+.toc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:12px 18px}
+.toc ol{margin:.3em 0;padding-left:1.4em;columns:2;column-gap:2em}
+.toc li{break-inside:avoid}
+@media (max-width:620px){.toc ol{columns:1}}
+.plan{width:100%;border-collapse:collapse;margin:.6em 0 1em;background:var(--paper);border-radius:var(--r);overflow:hidden}
+table{border-collapse:collapse;width:100%;margin:.8em 0;background:var(--paper);font-size:.95rem}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft)}
+.tablewrap{overflow-x:auto}
+.box{border-radius:var(--r);padding:12px 16px;margin:1em 0;border-left:5px solid}
+.box.key{background:var(--accent-soft);border-color:var(--accent)}
+.box.info{background:var(--info-soft);border-color:var(--info)}
+.box.warn{background:var(--bad-soft);border-color:var(--bad)}
+.box.ok{background:var(--ok-soft);border-color:var(--ok)}
+.box > :first-child{margin-top:0} .box > :last-child{margin-bottom:0}
+.box b.t{display:block;margin-bottom:.2em}
+/* array cells */
+.arr{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 6px;align-items:flex-end}
+.cellw{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:70px}
+.cell{width:100%;min-height:58px;display:flex;align-items:center;justify-content:center;font:600 1.15rem ui-monospace,Consolas,monospace;background:var(--cell);border:2px solid var(--cell-line);border-radius:8px;padding:4px 6px;transition:background .25s,transform .25s}
+.cell.hi{background:var(--hi);transform:translateY(-4px)}
+.cell.bad{background:var(--bad-soft);border-color:var(--bad)}
+.idx{font:700 .85rem ui-monospace,Consolas,monospace;color:var(--accent)}
+.lbl{font-size:.75rem;color:var(--muted);text-align:center}
+.arrname{font:600 .95rem ui-monospace,Consolas,monospace;margin-right:8px;align-self:center}
+/* widgets */
+.widget{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:1.2em 0}
+.widget h4{margin:0 0 .4em;font-size:1rem}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:.5em 0}
+input[type=number],input[type=text]{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:7em}
+button{font:inherit;font-size:.95rem;padding:7px 14px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.ghost{background:transparent;color:var(--accent)}
+button:disabled{opacity:.45;cursor:default}
+.console{background:#0c0c0c;color:#e8e8e8;font:.9rem ui-monospace,Consolas,monospace;padding:10px 12px;border-radius:8px;min-height:2.6em;white-space:pre-wrap}
+.console .err{color:#ff6b5e}
+.console .okc{color:#5fd38d}
+.console .dim{color:#8b8b8b}
+.codeview{background:var(--code-bg);color:var(--code-ink);border-radius:8px;padding:10px 0;font:.88rem ui-monospace,Consolas,monospace;overflow-x:auto}
+.codeview div{padding:1px 14px;white-space:pre}
+.codeview div.cur{background:rgba(255,209,102,.22);box-shadow:inset 4px 0 0 var(--hi)}
+.vars{display:flex;gap:8px;flex-wrap:wrap;margin:.6em 0}
+.var{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 10px;font:.9rem ui-monospace,Consolas,monospace}
+.var b{color:var(--accent)}
+.note{color:var(--muted);font-size:.9rem}
+/* quizzes */
+.quiz{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;margin:1em 0}
+.quiz .q{font-weight:600;margin:.2em 0 .5em}
+.quiz ol{margin:.3em 0;padding-left:1.6em}
+.quiz pre{margin:.4em 0}
+.js .quiz ol{list-style:none;padding:0;display:grid;gap:6px}
+.js .quiz li{border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer;background:var(--bg)}
+.js .quiz li:hover{border-color:var(--accent)}
+.js .quiz li.right{background:var(--ok-soft);border-color:var(--ok)}
+.js .quiz li.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.js .quiz li.locked{cursor:default}
+.js .quiz li code{background:transparent}
+.quiz details{margin-top:.5em}
+.quiz details summary{cursor:pointer;color:var(--info);font-size:.92rem}
+.js .quiz details summary{display:none}
+.quiz .fb{font-weight:700;margin:.3em 0 0}
+.fb.ok{color:var(--ok)} .fb.bad{color:var(--bad)}
+.js-only{display:none}
+.js .js-only{display:block}
+.js .no-js{display:none}
+.score{position:sticky;bottom:12px;margin-top:1em;background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 18px;display:inline-block;font-weight:700}
+.compare td:first-child{font-weight:600;white-space:nowrap}
+.yes{color:var(--ok);font-weight:700} .no{color:var(--bad);font-weight:700}
+.wrongright{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:620px){.wrongright{grid-template-columns:1fr}}
+.wrongright .lab{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.wrongright .lab.no{color:var(--bad)} .wrongright .lab.yes{color:var(--ok)}
+.wrongright pre{margin:.2em 0}
+.mem{display:flex;gap:0;margin:10px 0;overflow-x:auto}
+.mem div{border:1px solid var(--cell-line);padding:6px 8px;text-align:center;min-width:72px;font:.8rem ui-monospace,Consolas,monospace;background:var(--cell)}
+.mem div b{display:block;font-size:1rem}
+footer{margin-top:3em;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1em}
+@media print{.js-only,.score,button{display:none!important}.js .quiz details summary{display:block}}
+.wrongright > div{min-width:0}
+pre{max-width:100%}
+.quiz,.widget,.box{min-width:0;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">Programazioa 1 · C# · Unitate didaktikoa</div>
+  <h1>Arrayak: aldagai bakar bat, balio asko</h1>
+  <p>Unitate honetan ikasiko duzu datu-multzoak <b>array</b> batean gordetzen, haien balioak irakurtzen eta aldatzen, eta begiztekin zeharkatzen. Amaieran, Visual Studion praktika bat egingo duzu eta Moodlera igoko duzu.</p>
+  <table class="plan">
+    <tr><th>Zatia</th><th>Zer</th><th>Denbora</th></tr>
+    <tr><td>1</td><td>Teoria eta autoebaluazioa (orri hau, 1–10 atalak)</td><td>~50 min</td></tr>
+    <tr><td>2</td><td>Praktika Visual Studion: <code>Program.cs</code> proba automatikoekin (11. atala)</td><td>~70 min</td></tr>
+  </table>
+</header>
+
+<nav class="toc">
+  <b>Edukiak</b>
+  <ol>
+    <li><a href="#arazoa">Arazoa</a></li>
+    <li><a href="#zer">Zer da array bat?</a></li>
+    <li><a href="#sortu">Array bat sortzea</a></li>
+    <li><a href="#atzitu">Irakurri, idatzi eta Length</a></li>
+    <li><a href="#for">for batekin zeharkatzea</a></li>
+    <li><a href="#foreach">foreach eta for: noiz bata, noiz bestea</a></li>
+    <li><a href="#patroiak">Patroi klasikoak</a></li>
+    <li><a href="#metodoak">Arrayak eta metodoak</a></li>
+    <li><a href="#akatsak">Ohiko akatsak</a></li>
+    <li><a href="#test">Autoebaluazioa</a></li>
+    <li><a href="#praktika">Praktika: Visual Studio</a></li>
+    <li><a href="#galderak">Galdera ohikoak</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<h2 id="arazoa"><span class="n">1</span>Arazoa</h2>
+<p>RPG joko bat programatzen ari zara. Zure taldeak 5 pertsonaia ditu, eta bakoitzaren bizitza gorde behar duzu. Orain arte ikasitakoarekin, honela egingo zenuke:</p>
+<pre><code class="cs">int bizitza1 = 80;
+int bizitza2 = 45;
+int bizitza3 = 0;
+int bizitza4 = 120;
+int bizitza5 = 30;
+
+int batura = bizitza1 + bizitza2 + bizitza3 + bizitza4 + bizitza5;</code></pre>
+<div class="box key">
+  <b class="t">Pentsatu une batez</b>
+  <p>Eta taldeak 50 pertsonaia baditu? Eta jokalariak berak erabakitzen badu zenbat izango diren? Ezin dituzu aldagaiak "begizta batean sortu", eta ezin duzu <code>bizitzaI</code> idatzi <code>i</code> aldatuz joateko.</p>
+</div>
+<p>Behar duguna da <b>aldagai bakar bat, balio asko gordetzen dituena</b>, eta posizio-zenbaki batez atzitzeko modukoa. Horixe da array bat.</p>
+
+<!-- 2 -->
+<h2 id="zer"><span class="n">2</span>Zer da array bat?</h2>
+<p><b>Array</b> bat <b>mota bereko</b> elementuen multzo <b>ordenatua</b> da, <b>tamaina finkoa</b> duena, eta elementu bakoitza <b>indize</b> baten bidez atzitzen da. Ingelesezko <i>array</i> hitzak "lerrokadura, multzo ordenatua" esan nahi du. Gaztelaniazko dokumentazioan <i>matriz</i> edo <i>arreglo</i> ere deitzen zaio.</p>
+<p>Irudikatu <b>armairutxo zenbakidun</b> ilara bat bezala (gimnasioetako taquillak). Armairutxo guztiak berdinak dira (mota bera), kopurua eraikitzean erabakitzen da (tamaina finkoa), eta bakoitzak bere zenbakia du (indizea).</p>
+
+<div class="arr" aria-label="bizitza arraya">
+  <span class="arrname">bizitza</span>
+  <div class="cellw"><div class="cell">80</div><div class="idx">[0]</div><div class="lbl">Gerlaria</div></div>
+  <div class="cellw"><div class="cell">45</div><div class="idx">[1]</div><div class="lbl">Magoa</div></div>
+  <div class="cellw"><div class="cell">0</div><div class="idx">[2]</div><div class="lbl">Arkularia</div></div>
+  <div class="cellw"><div class="cell">120</div><div class="idx">[3]</div><div class="lbl">Sendatzailea</div></div>
+  <div class="cellw"><div class="cell">30</div><div class="idx">[4]</div><div class="lbl">Lapurra</div></div>
+</div>
+<p class="note">5 elementu → indizeak 0tik 4ra.</p>
+
+<div class="box key">
+  <b class="t">Hiru arau, beti</b>
+  <ol>
+    <li><b>Mota bera:</b> <code>int[]</code> batean <code>int</code>-ak bakarrik gorde daitezke.</li>
+    <li><b>Tamaina finkoa:</b> sortu ondoren ezin da handitu edo txikitu.</li>
+    <li><b>Indizea 0tik hasten da:</b> lehena <code>[0]</code> da, eta azkena <code>[Length - 1]</code>.</li>
+  </ol>
+</div>
+
+<h3>Zergatik hasten da 0tik? (barrutik nola dabilen)</h3>
+<p>Array bat sortzean, .NET-eko exekuzio-inguruneak (CLR) <b>memoria-bloke jarraitu bat</b> erreserbatzen du. <code>int</code> bakoitzak 4 byte hartzen ditu, eta elementuak bata bestearen ondoan daude:</p>
+<div class="mem">
+  <div>helbidea<b>1000</b>[0]</div><div>helbidea<b>1004</b>[1]</div><div>helbidea<b>1008</b>[2]</div><div>helbidea<b>1012</b>[3]</div><div>helbidea<b>1016</b>[4]</div>
+</div>
+<p>Elementu baten helbidea kalkulatzeko: <code>hasiera + indizea × 4</code>. Indizeak ez du esaten "zenbagarrena den", baizik eta <b>hasieratik zenbat posizio salto egin behar diren</b>. Lehena hasieran bertan dago (0 salto), eta horregatik da <code>[0]</code>. Kalkulu hau oso azkarra da: array batean edozein posizio atzitzeak denbora bera behar du, 0 izan zein 1.000.000 izan.</p>
+
+<!-- 3 -->
+<h2 id="sortu"><span class="n">3</span>Array bat sortzea</h2>
+<p>Hiru modu daude. Hirurek gauza bera egiten dute: <b>mota</b>, <b>izena</b> eta <b>tamaina</b> finkatu.</p>
+<pre><code class="cs">// A) Tamaina bakarrik: 5 armairutxo, denak balio lehenetsiarekin (int -&gt; 0)
+int[] bizitza = new int[5];
+
+// B) Balioak zuzenean: tamaina balio kopuruak erabakitzen du (5)
+int[] bizitza2 = { 80, 45, 0, 120, 30 };
+
+// C) Gauza bera, luzeago idatzita
+int[] bizitza3 = new int[] { 80, 45, 0, 120, 30 };
+
+// Beste mota batzuk ere bai:
+string[] inbentarioa = { "ezpata", "edabea", "giltza" };
+double[] prezioak = new double[10];</code></pre>
+
+<div class="tablewrap"><table>
+  <tr><th>Mota</th><th>Balio lehenetsia (<code>new mota[n]</code> egitean)</th></tr>
+  <tr><td><code>int</code>, <code>long</code>, <code>double</code></td><td><code>0</code> / <code>0.0</code></td></tr>
+  <tr><td><code>bool</code></td><td><code>false</code></td></tr>
+  <tr><td><code>char</code></td><td><code>'\0'</code> (karaktere hutsa)</td></tr>
+  <tr><td><code>string</code></td><td><code>null</code> (ez dago testurik)</td></tr>
+</table></div>
+
+<div class="box info">
+  <b class="t">Noiz erabili bakoitza?</b>
+  <p><b>A)</b> balioak programa exekutatzean ezagutuko dituzunean (adibidez, erabiltzaileari eskatuko dizkiozunean). <b>B)</b> balioak aldez aurretik ezagutzen dituzunean. <b>C)</b> B-ren berdina da; dokumentazioan ikusiko duzu, baina B laburragoa da.</p>
+</div>
+
+<div class="quiz" data-correct="c">
+  <p class="q">Zer dauka <code>bool[] atea = new bool[3];</code> egin ondoren?</p>
+  <ol type="a">
+    <li data-k="a">Ezer ez, errore bat ematen du</li>
+    <li data-k="b"><code>{ true, true, true }</code></li>
+    <li data-k="c"><code>{ false, false, false }</code></li>
+    <li data-k="d"><code>{ null, null, null }</code></li>
+  </ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>c)</b> <code>new</code>-ek elementu guztiak motaren balio lehenetsiarekin betetzen ditu. <code>bool</code>-en kasuan, <code>false</code>.</p></details>
+</div>
+
+<!-- 4 -->
+<h2 id="atzitu"><span class="n">4</span>Irakurri, idatzi eta <code>Length</code></h2>
+<pre><code class="cs">int[] bizitza = { 80, 45, 0, 120, 30 };
+
+int x = bizitza[3];          // IRAKURRI: x = 120
+bizitza[2] = 50;             // IDATZI: Arkulariak 50 bizitza ditu orain
+bizitza[1] = bizitza[1] + 10;   // irakurri, kalkulatu eta idatzi: 55
+
+Console.WriteLine(bizitza.Length);   // 5 (elementu kopurua)
+int azkena = bizitza[bizitza.Length - 1];   // 30 (azken elementua)</code></pre>
+<p><code>Length</code> arrayaren <b>propietate</b> bat da: zenbat elementu dituen esaten du. Ez da metodo bat (ez du parentesirik), eta ezin da aldatu.</p>
+
+<div class="widget js-only" data-explorer data-name="bizitza" data-values="[80,45,0,120,30]" data-labels='["Gerlaria","Magoa","Arkularia","Sendatzailea","Lapurra"]'>
+  <h4>🔍 Armairutxo-esploratzailea</h4>
+  <p class="note">Idatzi indize bat eta probatu. Zer gertatzen da 5, 7 edo -1 idazten baduzu?</p>
+  <div class="arr"></div>
+  <div class="row">
+    <label>Indizea <input type="number" class="ix-in" value="3"></label>
+    <button class="btn-read">Irakurri</button>
+    <label>Balioa <input type="number" class="val-in" value="99"></label>
+    <button class="btn-write ghost">Idatzi</button>
+    <button class="btn-len ghost">.Length</button>
+  </div>
+  <div class="console"></div>
+</div>
+
+<div class="box warn">
+  <b class="t">IndexOutOfRangeException</b>
+  <p>Existitzen ez den posizio bat atzitzen baduzu (<code>bizitza[5]</code> edo <code>bizitza[-1]</code>), programa <b>exekuzioan</b> geldituko da errore honekin: <i>Index was outside the bounds of the array</i>. Konpilatzaileak ez du abisatzen; programa exekutatzean gertatzen da. Errore hau arrayekin ohikoena da, eta normalean <code>&lt;=</code> bat dago <code>&lt;</code> baten ordez.</p>
+</div>
+
+<div class="quiz" data-correct="b">
+  <p class="q"><code>string[] inb = { "ezpata", "edabea", "giltza", "mapa" };</code><br>Zer inprimatzen du <code>Console.WriteLine(inb[inb.Length - 2]);</code>?</p>
+  <ol type="a">
+    <li data-k="a"><code>edabea</code></li>
+    <li data-k="b"><code>giltza</code></li>
+    <li data-k="c"><code>mapa</code></li>
+    <li data-k="d"><code>IndexOutOfRangeException</code></li>
+  </ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>b)</b> <code>Length</code> 4 da, beraz <code>inb[4 - 2]</code> = <code>inb[2]</code> = <code>"giltza"</code>.</p></details>
+</div>
+
+<!-- 5 -->
+<h2 id="for"><span class="n">5</span><code>for</code> batekin zeharkatzea</h2>
+<p>Hemen dago arrayen benetako indarra. Indizea zenbaki bat denez, <b>aldagai bat</b> erabil dezakegu indize gisa, eta begizta batekin <b>elementu guztiak</b> bisitatu. <code>i</code> aldagaia <b>armairutxoz armairutxo mugitzen den hatza</b> da.</p>
+<pre><code class="cs">int[] bizitza = { 80, 45, 0, 120, 30 };
+int batura = 0;
+for (int i = 0; i &lt; bizitza.Length; i++)
+{
+    batura = batura + bizitza[i];
+}
+Console.WriteLine(batura);   // 275</code></pre>
+<div class="box key">
+  <b class="t">Begizta "kanonikoa"</b>
+  <p><code>for (int i = 0; i &lt; izena.Length; i++)</code> → <code>i</code> 0tik hasten da eta <code>Length - 1</code>-en amaitzen da. Beti <code>&lt;</code>, inoiz ez <code>&lt;=</code>. Erabili <code>Length</code>, ez <code>5</code> idatzita: horrela, arrayaren tamaina aldatzen bada, kodeak berdin funtzionatuko du.</p>
+</div>
+
+<div class="widget js-only" data-stepper data-name="bizitza" data-sum="batura" data-values="[80,45,0,120,30]">
+  <h4>▶ Pausoz pauso (debuggerraren F10 bezala)</h4>
+  <div class="codeview"></div>
+  <div class="arr"></div>
+  <div class="vars"></div>
+  <p class="stepmsg"></p>
+  <div class="console"></div>
+  <div class="row">
+    <button class="st-prev ghost">◀ Atzera</button>
+    <button class="st-next">Hurrengoa ▶</button>
+    <button class="st-reset ghost">↺ Hasieratik</button>
+  </div>
+</div>
+<div class="box info no-js">
+  <b class="t">Trazatze-taula</b>
+  <table><tr><th>i</th><th>i &lt; 5?</th><th>bizitza[i]</th><th>batura (ondoren)</th></tr>
+  <tr><td>0</td><td>true</td><td>80</td><td>80</td></tr>
+  <tr><td>1</td><td>true</td><td>45</td><td>125</td></tr>
+  <tr><td>2</td><td>true</td><td>0</td><td>125</td></tr>
+  <tr><td>3</td><td>true</td><td>120</td><td>245</td></tr>
+  <tr><td>4</td><td>true</td><td>30</td><td>275</td></tr>
+  <tr><td>5</td><td>false → irten</td><td>—</td><td>275</td></tr></table>
+</div>
+<p>Visual Studion gauza bera egin dezakezu: jarri eten-puntu bat (<b>F9</b>) <code>for</code>-aren lerroan eta sakatu <b>F10</b>. Behean, <i>Automático</i> leihoan, <code>i</code> eta <code>batura</code> aldatzen ikusiko dituzu.</p>
+
+<div class="quiz" data-correct="d">
+  <p class="q">Zer gertatzen da kode honekin?</p>
+<pre><code class="cs">int[] z = { 4, 8, 15 };
+for (int i = 0; i &lt;= z.Length; i++)
+{
+    Console.WriteLine(z[i]);
+}</code></pre>
+  <ol type="a">
+    <li data-k="a">4, 8, 15 inprimatzen ditu</li>
+    <li data-k="b">8 eta 15 bakarrik inprimatzen ditu</li>
+    <li data-k="c">Ez da konpilatzen</li>
+    <li data-k="d">4, 8, 15 inprimatzen ditu eta gero <code>IndexOutOfRangeException</code></li>
+  </ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>d)</b> <code>&lt;=</code> erabiltzean, <code>i</code> 3ra iristen da, eta <code>z[3]</code> ez da existitzen (0, 1, 2 bakarrik). Konpilatu egiten da; errorea exekuzioan agertzen da.</p></details>
+</div>
+
+<!-- 6 -->
+<h2 id="foreach"><span class="n">6</span><code>foreach</code> eta <code>for</code>: noiz bata, noiz bestea</h2>
+<p><code>foreach</code> ikusi duzu dagoeneko <code>string</code>-ak zeharkatzeko. Arrayekin ere badabil: "elementu bakoitzeko, egin hau".</p>
+<pre><code class="cs">foreach (int b in bizitza)
+{
+    Console.WriteLine(b);   // b-k elementuaren BALIOA du, ez indizea
+}</code></pre>
+<div class="tablewrap"><table class="compare">
+  <tr><th></th><th><code>for</code></th><th><code>foreach</code></th></tr>
+  <tr><td>Indizea eskuragarri</td><td class="yes">Bai (<code>i</code>)</td><td class="no">Ez</td></tr>
+  <tr><td>Arrayko balioak aldatu</td><td class="yes">Bai (<code>z[i] = ...</code>)</td><td class="no">Ez (irakurtzeko soilik)</td></tr>
+  <tr><td>Zati bat bakarrik zeharkatu</td><td class="yes">Bai</td><td class="no">Ez, beti osorik</td></tr>
+  <tr><td>Akatsak egiteko arriskua</td><td>Handiagoa (<code>&lt;=</code>, mugak)</td><td class="yes">Txikiagoa</td></tr>
+  <tr><td>Noiz erabili</td><td>Posizioa behar denean edo aldatu behar denean</td><td>Elementu guztiak irakurri besterik ez denean</td></tr>
+</table></div>
+<p class="note">Industrian bi forma erabiltzen dira. <code>foreach</code> nahiago izaten da indizea behar ez denean, irakurterrazagoa delako. Zalantza baduzu, <code>for</code>-ak beti funtzionatzen du.</p>
+
+<!-- 7 -->
+<h2 id="patroiak"><span class="n">7</span>Patroi klasikoak</h2>
+<p>Arrayekin egiten diren ariketa gehienak lau patroiren aldaerak dira. Ikasi ideia, ez kodea buruz.</p>
+<div class="tablewrap"><table>
+  <tr><th>Patroia</th><th>Ideia</th><th>Tranpa</th></tr>
+  <tr><td><b>Metatzailea</b> (batura)</td><td>Aldagai bat 0tik hasi, eta elementu bakoitza gehitu.</td><td>Aldagaia begiztatik <b>kanpo</b> sortu behar da.</td></tr>
+  <tr><td><b>Kontagailua</b></td><td>Aldagai bat 0tik hasi, eta baldintza betetzen den bakoitzean <code>++</code>.</td><td>Kontatu behar dena ez da balioa, baizik eta zenbat aldiz betetzen den.</td></tr>
+  <tr><td><b>Maximoa / minimoa</b></td><td>Lehen elementua "orain arteko onena" bezala hartu, eta gainerakoekin konparatu.</td><td>Ez hasi <code>0</code>-rekin: balio guztiak negatiboak badira, okerra da.</td></tr>
+  <tr><td><b>Bilaketa</b></td><td>Elementuz elementu begiratu; aurkitzean, posizioa itzuli.</td><td>"Ez dago" esan aurretik, array <b>osoa</b> begiratu behar da.</td></tr>
+</table></div>
+<p>Kontagailuaren adibidea: zenbat pertsonaiak dituzte 50 bizitza baino gehiago?</p>
+<pre><code class="cs">int kopurua = 0;
+foreach (int b in bizitza)
+{
+    if (b &gt; 50)
+    {
+        kopurua++;
+    }
+}
+Console.WriteLine($"{kopurua} pertsonaia sendo");</code></pre>
+
+<!-- 8 -->
+<h2 id="metodoak"><span class="n">8</span>Arrayak eta metodoak</h2>
+<p>Funtzioetan ikusi zenuen bezala, metodo batek parametroak jaso eta balio bat itzul dezake. Array bat parametro gisa pasa daiteke, eta array bat ere itzul daiteke:</p>
+<pre><code class="cs">// Array bat JASO eta zenbaki bat ITZULI
+static int Batura(int[] zenbakiak)
+{
+    int batura = 0;
+    for (int i = 0; i &lt; zenbakiak.Length; i++)
+    {
+        batura = batura + zenbakiak[i];
+    }
+    return batura;
+}
+
+// Array bat JASO eta array BERRI bat ITZULI
+static int[] Bikoiztu(int[] zenbakiak)
+{
+    int[] berria = new int[zenbakiak.Length];   // tamaina bereko array berria
+    for (int i = 0; i &lt; zenbakiak.Length; i++)
+    {
+        berria[i] = zenbakiak[i] * 2;
+    }
+    return berria;
+}
+
+// Main-etik deitzea:
+int[] urrea = { 10, 25, 5 };
+Console.WriteLine(Batura(urrea));        // 40
+int[] bikoitza = Bikoiztu(urrea);        // { 20, 50, 10 }</code></pre>
+<div class="box info">
+  <b class="t">Zergatik <code>static</code>?</b>
+  <p><code>Main</code> <code>static</code> denez, hortik zuzenean deitzen diren metodoek ere <code>static</code> izan behar dute. Objektuei buruzko programazioa (POO) ikastean ulertuko duzu zergatik. Oraingoz: beti <code>static</code>.</p>
+</div>
+<p>Parametroaren izenak (<code>zenbakiak</code>) ez du zertan deitzean erabilitako aldagaiaren izen bera izan (<code>urrea</code>). Metodoak berdin funtzionatzen du <b>edozein</b> <code>int[]</code>-rekin: hori da metodoen abantaila.</p>
+
+<!-- 9 -->
+<h2 id="akatsak"><span class="n">9</span>Ohiko akatsak</h2>
+<div class="wrongright">
+  <div><div class="lab no">✗ Gaizki</div><pre><code class="cs">for (int i = 0; i &lt;= z.Length; i++)</code></pre></div>
+  <div><div class="lab yes">✓ Ondo</div><pre><code class="cs">for (int i = 0; i &lt; z.Length; i++)</code></pre></div>
+</div>
+<div class="wrongright">
+  <div><div class="lab no">✗ Gaizki: azkena ez da [Length]</div><pre><code class="cs">int azkena = z[z.Length];</code></pre></div>
+  <div><div class="lab yes">✓ Ondo</div><pre><code class="cs">int azkena = z[z.Length - 1];</code></pre></div>
+</div>
+<div class="wrongright">
+  <div><div class="lab no">✗ Gaizki: zenbaki finkoa</div><pre><code class="cs">for (int i = 0; i &lt; 5; i++)</code></pre></div>
+  <div><div class="lab yes">✓ Ondo: edozein tamainarekin</div><pre><code class="cs">for (int i = 0; i &lt; z.Length; i++)</code></pre></div>
+</div>
+<div class="wrongright">
+  <div><div class="lab no">✗ Gaizki: negatiboekin huts egiten du</div><pre><code class="cs">int max = 0;</code></pre></div>
+  <div><div class="lab yes">✓ Ondo</div><pre><code class="cs">int max = z[0];</code></pre></div>
+</div>
+<div class="wrongright">
+  <div><div class="lab no">✗ Gaizki: zatiketa osoa (1)</div><pre><code class="cs">double m = batura / z.Length;   // batura int bada</code></pre></div>
+  <div><div class="lab yes">✓ Ondo (1.5)</div><pre><code class="cs">double b = batura;
+double m = b / z.Length;</code></pre></div>
+</div>
+<div class="wrongright">
+  <div><div class="lab no">✗ Gaizki: arraya bera inprimatzen</div><pre><code class="cs">Console.WriteLine(z);   // System.Int32[]</code></pre></div>
+  <div><div class="lab yes">✓ Ondo: elementuz elementu</div><pre><code class="cs">foreach (int x in z) Console.Write(x + " ");</code></pre></div>
+</div>
+
+<!-- 10 -->
+<section id="test">
+<h2><span class="n">10</span>Autoebaluazioa</h2>
+<p>Erantzun galdera hauek praktikara pasatu aurretik. Lehen saiakeran asmatutakoak bakarrik zenbatzen dira. Ez du notarik: zuretzat da.</p>
+
+<div class="quiz" data-correct="c">
+  <p class="q">1. Zenbat elementu ditu <code>int[] a = new int[8];</code> arrayak, eta zein da azken indizea?</p>
+  <ol type="a"><li data-k="a">7 elementu, azkena [7]</li><li data-k="b">8 elementu, azkena [8]</li><li data-k="c">8 elementu, azkena [7]</li><li data-k="d">9 elementu, azkena [8]</li></ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>c)</b> 8 elementu, 0tik 7ra indizeatuta.</p></details>
+</div>
+
+<div class="quiz" data-correct="a">
+  <p class="q">2. Zer inprimatzen du?</p>
+<pre><code class="cs">int[] a = { 3, 6, 9 };
+a[1] = a[0] + a[2];
+Console.WriteLine(a[1]);</code></pre>
+  <ol type="a"><li data-k="a">12</li><li data-k="b">6</li><li data-k="c">9</li><li data-k="d">15</li></ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>a)</b> <code>a[0] + a[2]</code> = 3 + 9 = 12, eta <code>a[1]</code>-en gordetzen da.</p></details>
+</div>
+
+<div class="quiz" data-correct="b">
+  <p class="q">3. Zein lerrok ez du konpilatzen?</p>
+  <ol type="a"><li data-k="a"><code>int[] a = new int[3];</code></li><li data-k="b"><code>int[] a = { 1, "bi", 3 };</code></li><li data-k="c"><code>string[] s = { "a", "b" };</code></li><li data-k="d"><code>double[] d = { 1.5, 2 };</code></li></ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>b)</b> Array bateko elementu guztiak mota berekoak izan behar dira. d) konpilatu egiten da: <code>2</code> zenbaki osoa <code>double</code> bihurtzen da modu inplizituan.</p></details>
+</div>
+
+<div class="quiz" data-correct="d">
+  <p class="q">4. Zer inprimatzen du?</p>
+<pre><code class="cs">int[] a = { 5, 1, 4 };
+int k = 0;
+foreach (int x in a)
+{
+    if (x &gt; 2) k++;
+}
+Console.WriteLine(k);</code></pre>
+  <ol type="a"><li data-k="a">0</li><li data-k="b">1</li><li data-k="c">9</li><li data-k="d">2</li></ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>d)</b> Kontagailu patroia da: 5 eta 4 dira 2 baino handiagoak.</p></details>
+</div>
+
+<div class="quiz" data-correct="c">
+  <p class="q">5. Arrayko balio guztiak <b>bikoiztu</b> nahi dituzu (arraya bera aldatuz). Zein erabili?</p>
+  <ol type="a"><li data-k="a"><code>foreach</code>, <code>x = x * 2;</code> eginez</li><li data-k="b">Bietako edozein</li><li data-k="c"><code>for</code>, <code>a[i] = a[i] * 2;</code> eginez</li><li data-k="d">Ezin da egin, arrayak tamaina finkoa du</li></ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>c)</b> <code>foreach</code>-eko aldagaia irakurtzeko soilik da; balioa aldatzeko indizea behar da. Tamaina finkoa izateak ez du eragozten <b>balioak</b> aldatzea, <b>elementu kopurua</b> aldatzea baizik.</p></details>
+</div>
+
+<div class="quiz" data-correct="a">
+  <p class="q">6. Zer inprimatzen du?</p>
+<pre><code class="cs">int[] a = { 2, 4, 6, 8 };
+for (int i = a.Length - 1; i &gt;= 0; i = i - 2)
+{
+    Console.Write(a[i] + " ");
+}</code></pre>
+  <ol type="a"><li data-k="a"><code>8 4</code></li><li data-k="b"><code>8 6 4 2</code></li><li data-k="c"><code>6 2</code></li><li data-k="d"><code>IndexOutOfRangeException</code></li></ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>a)</b> <code>i</code> 3tik hasten da (8), gero 1 (4), gero -1 → baldintza <code>false</code>, irten.</p></details>
+</div>
+
+<div class="quiz" data-correct="b">
+  <p class="q">7. Funtzio honek balio handiena itzuli behar du. Zein sarrerarekin huts egiten du?</p>
+<pre><code class="cs">static int Max(int[] z)
+{
+    int max = 0;
+    foreach (int x in z)
+    {
+        if (x &gt; max) max = x;
+    }
+    return max;
+}</code></pre>
+  <ol type="a"><li data-k="a"><code>{ 3, 9, 1 }</code></li><li data-k="b"><code>{ -4, -2, -7 }</code></li><li data-k="c"><code>{ 0, 5 }</code></li><li data-k="d">Beti ondo dabil</li></ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>b)</b> 0 itzultzen du, eta zuzena -2 da. Hasieran <code>max = z[0]</code> jarri behar da.</p></details>
+</div>
+
+<div class="quiz" data-correct="d">
+  <p class="q">8. <code>string[] s = new string[3];</code> egin ondoren, zer gertatzen da <code>Console.WriteLine(s[0].Length);</code> exekutatzean?</p>
+  <ol type="a"><li data-k="a">0 inprimatzen du</li><li data-k="b">3 inprimatzen du</li><li data-k="c"><code>IndexOutOfRangeException</code></li><li data-k="d">Errorea: <code>s[0]</code> <code>null</code> da eta ez du <code>Length</code>-ik</li></ol>
+  <details><summary>Erantzuna ikusi</summary><p><b>d)</b> <code>string</code>-en balio lehenetsia <code>null</code> da: "ez dago testurik". <code>null</code> baten <code>Length</code> eskatzeak <code>NullReferenceException</code> ematen du.</p></details>
+</div>
+
+<div class="score js-only" id="score"></div>
+</section>
+
+<!-- 11 -->
+<h2 id="praktika"><span class="n">11</span>Praktika: Visual Studio</h2>
+<p>Orain programatzeko txanda da. Moodleko zereginean <b>hasierako proiektua</b> duzu (<code>.zip</code>). Bertan, <code>Program.cs</code> fitxategiak metodo hutsak eta <b>proba automatikoak</b> ditu.</p>
+<ol>
+  <li>Deskargatu eta deskonprimatu zip-a. Ireki <code>.csproj</code> fitxategia Visual Studiorekin (klik bikoitza).</li>
+  <li>Sakatu <b>F5</b>. Proba guztiak <code>[ -- ]</code> egoeran agertuko dira: egin gabe.</li>
+  <li>Bete metodoak ordenan. Bakoitzean, ezabatu <code>throw new NotImplementedException();</code> lerroa eta idatzi zure kodea.</li>
+  <li>Sakatu F5 berriro. Probak berde jartzen direnean, hurrengo metodora pasa.</li>
+  <li>Egin 10. ariketa (<code>ZureTaldea</code>) eta, nahi baduzu, erronka.</li>
+  <li>Igo <b><code>Program.cs</code> bakarrik</b> Moodleko zereginera.</li>
+</ol>
+<p>Hau ikusiko duzu kontsolan:</p>
+<pre class="console">1. Batura
+  <span class="okc">[ OK ]</span> Batura({10, 25, 5})
+  <span class="okc">[ OK ]</span> Batura({7})
+<span class="dim">...</span>
+3. Maximoa
+  <span class="okc">[ OK ]</span> Maximoa({40, 95, 12})
+  <span class="err">[ X  ]</span> Maximoa({-5, -2, -9}) negatiboak  -&gt;  espero zen: -2  |  zurea: 0
+<span class="dim">...</span>
+4. ZenbatBizirik
+  <span class="dim">[ -- ] ZenbatBizirik({30, 0, 12, 0})  (egin gabe)</span></pre>
+<div class="box ok">
+  <b class="t">Proba batek huts egiten badu</b>
+  <p>Ez aldatu kodea zoriz. Irakurri mezua (espero zena vs zurea), jarri eten-puntu bat (F9) zure metodoan, eta jarraitu F10-ekin, aldagaiak nola aldatzen diren ikusiz. Horixe da programatzaile batek egiten duena.</p>
+</div>
+
+<!-- 12 -->
+<h2 id="galderak"><span class="n">12</span>Galdera ohikoak</h2>
+<p><b>Array bat handitu daiteke sortu ondoren?</b><br>Ez. Tamaina aldagarria behar baduzu, <code>List&lt;int&gt;</code> erabiliko dugu (laster ikusiko dugu).</p>
+<p><b><code>string</code> bat <code>char</code>-en array bat al da?</b><br>Antzekoa da: <code>testua[0]</code> eta <code>testua.Length</code> erabil ditzakezu. Baina <code>string</code>-ak ezin dira aldatu (<i>immutable</i>): <code>testua[0] = 'A';</code> ez da konpilatzen.</p>
+<p><b>Zergatik ez du konpilatzaileak <code>z[10]</code> errorea antzematen?</b><br>Konpilatzean, askotan ez dago jakiterik arrayak zenbat elementu izango dituen edo zer balio izango duen indizeak (adibidez, erabiltzaileak idazten badu). Horregatik egiaztatzen da exekuzioan.</p>
+<p><b>Eta array batek beste array batzuk izan ditzake (taula bat)?</b><br>Bai: <code>int[,]</code> bi dimentsiotako arrayak dira (errenkadak eta zutabeak). Hurrengo urratsa izango da.</p>
+<p><b>Zer da <code>throw new NotImplementedException();</code> praktikako fitxategian?</b><br>"Hau oraindik ez dago programatuta" esateko modu estandarra da. Probek detektatzen dute eta <code>[ -- ]</code> erakusten dute. Salbuespenak (<i>exceptions</i>) aurrerago ikasiko ditugu.</p>
+
+<footer>Programazioa 1 · C# (.NET 8, Visual Studio 2022) · Arrayak unitatea</footer>
+</div>
+<script>
+window.T = {
+  right: "✓ Zuzena!", wrong: "✗ Ez da hori. Saiatu berriro.",
+  score: "Puntuazioa: {c} / {n} (erantzunda: {a})",
+  exNeedIdx: "Idatzi zenbaki oso bat indize gisa.",
+  exOut: "Indizea {i} ez dago. Baliozko indizeak: 0 – {max}.",
+  exWritten: "bizitza[{i}] orain {v} da.",
+  exLen: "{n} elementu → azken indizea {last} da (Length - 1).",
+  stepCode: ["int[] bizitza = { 80, 45, 0, 120, 30 };", "int batura = 0;", "for (int i = 0; i < bizitza.Length; i++)", "{", "    batura = batura + bizitza[i];", "}", "Console.WriteLine(batura);"],
+  stCreate: "{n} elementuko arraya sortzen da.",
+  stSum: "Metatzailea 0rekin hasten da, begiztatik kanpo.",
+  stInit: "i = 0 hasieratzen da.",
+  stInc: "i++ → i = {i}.",
+  stCond: "Baldintza: {i} < {n} → {r}.",
+  stExit: "Begiztatik irteten da.",
+  stAdd: "batura = {b} + bizitza[{i}] ({v}) = {s}.",
+  stEnd: "Emaitza inprimatzen da: {s}."
+};
+</script>
+<script>(function () {
+  document.documentElement.classList.add('js');
+  var T = window.T || {};
+
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+  /* ---------- tiny C# highlighter ---------- */
+  var KW = /^(int|double|bool|string|char|float|long|decimal|void|static|new|return|for|foreach|in|if|else|while|do|true|false|null|class|using|const|break|continue)$/;
+  var TY = /^(Console|Convert|Math|Exception|IndexOutOfRangeException|NotImplementedException|List)$/;
+  function hiLine(line) {
+    var out = '', i = 0, n = line.length;
+    while (i < n) {
+      var c = line[i];
+      if (c === '/' && line[i + 1] === '/') { out += '<span class="tok-com">' + esc(line.slice(i)) + '</span>'; break; }
+      if (c === '"' || (c === '$' && line[i + 1] === '"')) {
+        var j = line.indexOf('"', c === '$' ? i + 2 : i + 1);
+        if (j < 0) j = n - 1;
+        out += '<span class="tok-str">' + esc(line.slice(i, j + 1)) + '</span>'; i = j + 1; continue;
+      }
+      if (c === "'") {
+        var k = line.indexOf("'", i + 1); if (k < 0) k = n - 1;
+        out += '<span class="tok-str">' + esc(line.slice(i, k + 1)) + '</span>'; i = k + 1; continue;
+      }
+      if (/[0-9]/.test(c) && !/[A-Za-z_]/.test(line[i - 1] || '')) {
+        var m = line.slice(i).match(/^[0-9]+(\.[0-9]+)?/)[0];
+        out += '<span class="tok-num">' + m + '</span>'; i += m.length; continue;
+      }
+      if (/[A-Za-z_]/.test(c)) {
+        var w = line.slice(i).match(/^[A-Za-z_][A-Za-z0-9_]*/)[0];
+        if (KW.test(w)) out += '<span class="tok-kw">' + w + '</span>';
+        else if (TY.test(w)) out += '<span class="tok-ty">' + w + '</span>';
+        else out += w;
+        i += w.length; continue;
+      }
+      out += esc(c); i++;
+    }
+    return out;
+  }
+  document.querySelectorAll('pre code.cs').forEach(function (el) {
+    el.innerHTML = el.textContent.split('\n').map(hiLine).join('\n');
+  });
+
+  /* ---------- array drawing helper ---------- */
+  function drawArray(container, name, values, labels) {
+    container.innerHTML = '';
+    var nm = document.createElement('span'); nm.className = 'arrname'; nm.textContent = name; container.appendChild(nm);
+    var cells = [];
+    values.forEach(function (v, i) {
+      var w = document.createElement('div'); w.className = 'cellw';
+      var c = document.createElement('div'); c.className = 'cell'; c.textContent = v;
+      var ix = document.createElement('div'); ix.className = 'idx'; ix.textContent = '[' + i + ']';
+      w.appendChild(c); w.appendChild(ix);
+      if (labels) { var l = document.createElement('div'); l.className = 'lbl'; l.textContent = labels[i]; w.appendChild(l); }
+      container.appendChild(w); cells.push(c);
+    });
+    return cells;
+  }
+
+  /* ---------- explorer: read / write by index ---------- */
+  document.querySelectorAll('[data-explorer]').forEach(function (box) {
+    var name = box.getAttribute('data-name');
+    var values = JSON.parse(box.getAttribute('data-values'));
+    var labels = JSON.parse(box.getAttribute('data-labels'));
+    var arrEl = box.querySelector('.arr');
+    var idxIn = box.querySelector('.ix-in');
+    var valIn = box.querySelector('.val-in');
+    var con = box.querySelector('.console');
+    var cells = drawArray(arrEl, name, values, labels);
+    function clear() { cells.forEach(function (c) { c.classList.remove('hi', 'bad'); }); }
+    function getIdx() {
+      var t = idxIn.value.trim();
+      if (t === '' || !/^-?[0-9]+$/.test(t)) { con.innerHTML = '<span class="dim">' + esc(T.exNeedIdx) + '</span>'; return null; }
+      return parseInt(t, 10);
+    }
+    function outOfRange(i, code) {
+      con.innerHTML = '<span class="dim">&gt; ' + esc(code) + '</span>\n<span class="err">Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.</span>\n<span class="dim">' + esc(T.exOut.replace('{i}', i).replace('{max}', values.length - 1)) + '</span>';
+      arrEl.classList.add('shake');
+    }
+    box.querySelector('.btn-read').addEventListener('click', function () {
+      clear(); var i = getIdx(); if (i === null) return;
+      var code = 'Console.WriteLine(' + name + '[' + i + ']);';
+      if (i < 0 || i >= values.length) { outOfRange(i, code); return; }
+      cells[i].classList.add('hi');
+      con.innerHTML = '<span class="dim">&gt; ' + esc(code) + '</span>\n<span class="okc">' + values[i] + '</span>';
+    });
+    box.querySelector('.btn-write').addEventListener('click', function () {
+      clear(); var i = getIdx(); if (i === null) return;
+      var v = parseInt(valIn.value, 10); if (isNaN(v)) v = 0;
+      var code = name + '[' + i + '] = ' + v + ';';
+      if (i < 0 || i >= values.length) { outOfRange(i, code); return; }
+      values[i] = v; cells[i].textContent = v; cells[i].classList.add('hi');
+      con.innerHTML = '<span class="dim">&gt; ' + esc(code) + '</span>\n<span class="okc">' + esc(T.exWritten.replace('{i}', i).replace('{v}', v)) + '</span>';
+    });
+    box.querySelector('.btn-len').addEventListener('click', function () {
+      clear();
+      con.innerHTML = '<span class="dim">&gt; Console.WriteLine(' + name + '.Length);</span>\n<span class="okc">' + values.length + '</span>\n<span class="dim">' + esc(T.exLen.replace('{n}', values.length).replace('{last}', values.length - 1)) + '</span>';
+    });
+  });
+
+  /* ---------- for-loop stepper ---------- */
+  document.querySelectorAll('[data-stepper]').forEach(function (box) {
+    var name = box.getAttribute('data-name');
+    var sumName = box.getAttribute('data-sum');
+    var values = JSON.parse(box.getAttribute('data-values'));
+    var code = T.stepCode;
+    var codeEl = box.querySelector('.codeview');
+    var arrEl = box.querySelector('.arr');
+    var varsEl = box.querySelector('.vars');
+    var msgEl = box.querySelector('.stepmsg');
+    var outEl = box.querySelector('.console');
+    codeEl.innerHTML = code.map(function (l) { return '<div>' + hiLine(l) + '</div>'; }).join('');
+    var lines = codeEl.querySelectorAll('div');
+    var cells = drawArray(arrEl, name, values, null);
+    var N = values.length;
+    var steps = [];
+    steps.push({ line: 0, vars: {}, msg: T.stCreate.replace('{n}', N), cell: -1 });
+    steps.push({ line: 1, vars: { s: 0 }, msg: T.stSum, cell: -1 });
+    var s = 0;
+    for (var i = 0; i <= N; i++) {
+      var cond = i < N;
+      var m = (i === 0 ? T.stInit : T.stInc.replace('{i}', i)) + ' ' + T.stCond.replace('{i}', i).replace('{n}', N).replace('{r}', cond ? 'true' : 'false');
+      if (!cond) m += ' ' + T.stExit;
+      steps.push({ line: 2, vars: { i: i, s: s }, msg: m, cell: cond ? i : -1 });
+      if (cond) {
+        var before = s; s += values[i];
+        steps.push({ line: 4, vars: { i: i, s: s }, msg: T.stAdd.replace('{b}', before).replace('{v}', values[i]).replace('{i}', i).replace('{s}', s), cell: i });
+      }
+    }
+    steps.push({ line: 6, vars: { s: s }, msg: T.stEnd.replace('{s}', s), cell: -1, out: String(s) });
+    var k = 0;
+    function render() {
+      var st = steps[k];
+      lines.forEach(function (l, j) { l.classList.toggle('cur', j === st.line); });
+      cells.forEach(function (c, j) { c.classList.toggle('hi', j === st.cell); });
+      var html = '';
+      if ('i' in st.vars) html += '<span class="var">i = <b>' + st.vars.i + '</b></span>';
+      if ('i' in st.vars && st.vars.i < N) html += '<span class="var">' + name + '[i] = <b>' + values[st.vars.i] + '</b></span>';
+      if ('s' in st.vars) html += '<span class="var">' + sumName + ' = <b>' + st.vars.s + '</b></span>';
+      varsEl.innerHTML = html || '<span class="note">—</span>';
+      msgEl.textContent = (k + 1) + '/' + steps.length + ' · ' + st.msg;
+      outEl.textContent = st.out || '';
+      box.querySelector('.st-prev').disabled = k === 0;
+      box.querySelector('.st-next').disabled = k === steps.length - 1;
+    }
+    box.querySelector('.st-prev').addEventListener('click', function () { if (k > 0) { k--; render(); } });
+    box.querySelector('.st-next').addEventListener('click', function () { if (k < steps.length - 1) { k++; render(); } });
+    box.querySelector('.st-reset').addEventListener('click', function () { k = 0; render(); });
+    render();
+  });
+
+  /* ---------- quizzes ---------- */
+  var scoreEl = document.getElementById('score');
+  var testQuizzes = document.querySelectorAll('#test .quiz');
+  var answered = 0, correct = 0;
+  function updateScore() {
+    if (scoreEl) scoreEl.textContent = T.score.replace('{c}', correct).replace('{a}', answered).replace('{n}', testQuizzes.length);
+  }
+  document.querySelectorAll('.quiz').forEach(function (q) {
+    var right = q.getAttribute('data-correct');
+    var det = q.querySelector('details');
+    var fb = document.createElement('p'); fb.className = 'fb'; fb.style.display = 'none';
+    q.insertBefore(fb, det);
+    if (det) det.style.display = 'none';
+    var inTest = !!q.closest('#test');
+    var done = false;
+    q.querySelectorAll('ol > li').forEach(function (li) {
+      li.setAttribute('tabindex', '0');
+      function choose() {
+        if (done) return;
+        var k = li.getAttribute('data-k');
+        if (k === right) {
+          li.classList.add('right'); fb.className = 'fb ok'; fb.textContent = T.right;
+          done = true;
+          q.querySelectorAll('ol > li').forEach(function (x) { x.classList.add('locked'); });
+          if (det) { det.style.display = ''; det.open = true; }
+          if (inTest) { answered++; if (!q.dataset.missed) correct++; updateScore(); }
+        } else {
+          li.classList.add('wrong'); fb.className = 'fb bad'; fb.textContent = T.wrong;
+          q.dataset.missed = '1';
+        }
+        fb.style.display = '';
+      }
+      li.addEventListener('click', choose);
+      li.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(); } });
+    });
+  });
+  updateScore();
+})();
+</script>
+</body>
+</html>

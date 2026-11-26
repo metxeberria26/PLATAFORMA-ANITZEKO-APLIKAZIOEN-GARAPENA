@@ -1,0 +1,41 @@
+
+        h1 {
+            color: rgb(11, 213, 213);
+        }
+
+        h2 {
+            color: rgb(192, 29, 192);
+        }
+
+        .laranja {
+            color: rgb(234, 155, 9);
+        }
+
+        .gorria {
+            color: red;
+        }
+
+        .berdea {
+            color: rgb(13, 181, 13);
+        }
+
+        .urdina {
+            color: blue;
+        }
+
+        .arrosa {
+            color: rgb(216, 10, 120);
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 6px;
+        }
+
+        th {
+            color: orange;
+        }

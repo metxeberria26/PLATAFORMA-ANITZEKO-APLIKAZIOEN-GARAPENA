@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\manex\\OneDrive\\Ordenagailua\\GOIMAILA 1\\1ERRONKA\\PROGRAMAZIOA\\Bukliek\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{870758BD-2D47-4BF6-B2F0-96812022A97B}|HasieraHutsik.csproj|c:\\users\\manex\\onedrive\\ordenagailua\\goimaila 1\\1erronka\\programazioa\\bukliek\\begiztaextrak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{870758BD-2D47-4BF6-B2F0-96812022A97B}|HasieraHutsik.csproj|solutionrelative:begiztaextrak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BegiztaExtrak.cs",
+              "DocumentMoniker": "C:\\Users\\manex\\OneDrive\\Ordenagailua\\GOIMAILA 1\\1ERRONKA\\PROGRAMAZIOA\\Bukliek\\BegiztaExtrak.cs",
+              "RelativeDocumentMoniker": "BegiztaExtrak.cs",
+              "ToolTip": "C:\\Users\\manex\\OneDrive\\Ordenagailua\\GOIMAILA 1\\1ERRONKA\\PROGRAMAZIOA\\Bukliek\\BegiztaExtrak.cs",
+              "RelativeToolTip": "BegiztaExtrak.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAA6wDoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T07:24:52.929Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

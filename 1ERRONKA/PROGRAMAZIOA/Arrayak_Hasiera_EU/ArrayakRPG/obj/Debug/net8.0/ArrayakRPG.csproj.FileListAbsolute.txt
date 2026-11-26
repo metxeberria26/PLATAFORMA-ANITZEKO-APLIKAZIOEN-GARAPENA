@@ -1,0 +1,15 @@
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\bin\Debug\net8.0\ArrayakRPG.exe
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\bin\Debug\net8.0\ArrayakRPG.deps.json
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\bin\Debug\net8.0\ArrayakRPG.runtimeconfig.json
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\bin\Debug\net8.0\ArrayakRPG.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\bin\Debug\net8.0\ArrayakRPG.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ArrayakRPG.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ArrayakRPG.AssemblyInfoInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ArrayakRPG.AssemblyInfo.cs
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ArrayakRPG.csproj.CoreCompileInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ArrayakRPG.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\refint\ArrayakRPG.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ArrayakRPG.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ArrayakRPG.genruntimeconfig.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ref\ArrayakRPG.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Arrayak_Hasiera_EU\ArrayakRPG\obj\Debug\net8.0\ArrayakRPG.csproj.Up2Date

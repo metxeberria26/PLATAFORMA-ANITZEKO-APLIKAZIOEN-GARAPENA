@@ -1,0 +1,8 @@
+GTA III-Claude-GTA3_PS2-true-2001/10/22-24,95€
+GTA Vice City-Tommy Vercetti-GTAVC_PS2-true-2002/10/29-29,90€
+GTA San Andreas-Carl Johnson-GTASA_PS2-true-2004/10/26-45,50€
+GTA Liberty City Stories-Toni Cipriani-GTALCS_PSP-false-2005/10/24-12,30€
+GTA IV-Niko Bellic-GTA4_PS3-true-2008/04/29-15,20€
+GTA Chinatown Wars-Huang Lee-GTACW_NDS-false-2009/03/17-18,75€
+GTA V-Michael/Franklin/Trevor-GTA5_PS3-true-2013/09/17-19,99€
+GTA VI-Lucia/Jason-GTA6_PS5-true-2026/11/19-79,99€

@@ -1,0 +1,41 @@
+
+        h1 {
+            color: teal;
+        }
+
+        h2 {
+            color: purple;
+        }
+
+        .laranja {
+            color: orange;
+        }
+
+        .gorria {
+            color: red;
+        }
+
+        .berdea {
+            color: green;
+        }
+
+        .urdina {
+            color: rgb(0, 72, 255);
+        }
+
+        .arrosa {
+            color: deeppink;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 6px;
+        }
+
+        th {
+            color: rgb(4, 0, 255);
+        }

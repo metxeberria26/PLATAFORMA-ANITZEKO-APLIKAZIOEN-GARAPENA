@@ -1,0 +1,15 @@
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\bin\Debug\net10.0\ConsoleApp1.exe
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\bin\Debug\net10.0\ConsoleApp1.deps.json
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\bin\Debug\net10.0\ConsoleApp1.runtimeconfig.json
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\bin\Debug\net10.0\ConsoleApp1.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\bin\Debug\net10.0\ConsoleApp1.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ConsoleApp1.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\refint\ConsoleApp1.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ConsoleApp1.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ConsoleApp1.genruntimeconfig.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ref\ConsoleApp1.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\1ERRONKA\PROGRAMAZIOA\Baldintza_Begizta_Funtzioak\ConsoleApp1\ConsoleApp1\obj\Debug\net10.0\ConsoleA.CB28C8CC.Up2Date

@@ -1,0 +1,16 @@
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\bin\Debug\net8.0\jokoak.txt
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\bin\Debug\net8.0\POOPraktika.exe
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\bin\Debug\net8.0\POOPraktika.deps.json
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\bin\Debug\net8.0\POOPraktika.runtimeconfig.json
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\bin\Debug\net8.0\POOPraktika.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\bin\Debug\net8.0\POOPraktika.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\POOPraktika.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\POOPraktika.AssemblyInfoInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\POOPraktika.AssemblyInfo.cs
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\POOPraktika.csproj.CoreCompileInputs.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\POOPraktika.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\refint\POOPraktika.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\POOPraktika.pdb
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\POOPraktika.genruntimeconfig.cache
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\ref\POOPraktika.dll
+C:\Users\manex\OneDrive\Ordenagailua\GOIMAILA 1\2.ERRONKA\PROGRAMAZIOA\POO_Hasiera_EU\obj\Debug\net8.0\POOPrakt.3BCE77FA.Up2Date

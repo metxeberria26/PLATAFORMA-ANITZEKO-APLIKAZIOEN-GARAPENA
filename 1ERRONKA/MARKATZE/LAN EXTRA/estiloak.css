@@ -1,0 +1,47 @@
+**
+
+body {
+    margin: 0;
+}
+
+.edukiontzia {
+    width: 100%;
+    padding: 40px 28px 20px 28px;
+}
+
+/* GORRIA */
+.gorria {
+    height: 135px;
+    background-color: red;
+
+}
+
+/* BIGARREN LERROA */
+
+.urdina {
+    height: 105px;
+    background-color: blue;
+}
+
+.morea {
+    height: 105px;
+    background-color: purple;
+}
+
+/* HIRUGARREN LERROA */
+
+.berdea {
+    height: 97px;
+    background-color: green;
+}
+
+.laranja {
+    height: 97px;
+    background-color: orange;
+}
+
+.horia {
+    height: 97px;
+    background-color: yellow;
+}
+

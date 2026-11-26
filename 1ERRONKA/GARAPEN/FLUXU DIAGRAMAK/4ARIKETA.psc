@@ -1,0 +1,9 @@
+Algoritmo sin_titulo
+	Escribir 'SARTU NAHI DITUZUN ZENBAKI GUZTIAK ETA IRTETEKO SAKATU 0'
+	KONTADOREA <- 0
+	Repetir
+		KONTADOREA <- KONTADOREA+1
+		Leer N
+	Hasta Que N=0
+	Escribir KONTADOREA, " ZENBAKI IDATZI DITUZU"
+FinAlgoritmo

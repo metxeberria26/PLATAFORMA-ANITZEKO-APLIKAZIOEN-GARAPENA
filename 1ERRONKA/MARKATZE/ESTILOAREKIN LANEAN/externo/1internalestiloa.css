@@ -1,0 +1,32 @@
+
+
+        body {
+            margin: 0;
+                     
+        }
+
+        .GORRIA {
+            background-color: #f86262;
+            height: 18vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .BERDEA {
+            background-color: #60e460;
+            height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .URDINA {
+            background-color: #6161b7;
+            height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+    
